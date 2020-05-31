@@ -23,6 +23,9 @@ webhooks:
         operator: "NotIn"
         values:
         - {{ .Release.Namespace }}
+      {{- if .Values.webhook.extraValidationExpressions }}
+{{ toYaml .Values.webhook.extraValidationExpressions | indent 8 }}
+      {{- end }}
     rules:
       - apiGroups:
           - "cert-manager.io"

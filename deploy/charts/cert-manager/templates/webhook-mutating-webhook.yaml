@@ -26,6 +26,11 @@ webhooks:
         resources:
           - "*/*"
     failurePolicy: Fail
+    {{- if .Values.webhook.extraValidationExpressions }}
+    namespaceSelector:
+      matchExpressions:
+{{ toYaml .Values.webhook.extraValidationExpressions | indent 8 }}
+    {{- end }}
 {{- if (semverCompare ">=1.12-0" .Capabilities.KubeVersion.GitVersion) }}
     # Only include 'sideEffects' field in Kubernetes 1.12+
     sideEffects: None

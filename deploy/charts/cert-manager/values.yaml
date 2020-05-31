@@ -197,6 +197,10 @@ webhook:
   # Optional additional arguments for webhook
   extraArgs: []
 
+  # Optional validation expressions
+  # Useful for adding exceptions for system critical resources such as the CNI
+  extraValidationExpressions: []
+
   resources: {}
     # requests:
     #   cpu: 10m
